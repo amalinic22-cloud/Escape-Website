@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Guess the Country</title>
+
+<style>
+  body {
+    background:rgb(16, 16, 16);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    height: 100vh;
+  }
+
+  #box {
+    background:rgb(45, 45, 45);
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    width:700px;
+    text-align:center;
+  }
+
+  .map-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+  }
+
+  iframe {
+    width:100%;
+    height:100%;
+    border:0;
+    border-radius:10px;
+  }
+
+  .block-label {
+    position: absolute;
+    top: 15px;      
+    left: 10px;      
+    width: 140px;    
+    height: 50px;    
+    background: white;
+    border-radius: 6px;
+    z-index: 10;
+  }
+
+  input {
+    padding:10px;
+    width:80%;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:16px;
+  }
+
+  button {
+    margin-top:10px;
+    padding:10px 20px;
+    border:none;
+    background:#3B82F6;
+    color:white;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer;
+  }
+
+  #next-link {
+    display:none;
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+
+  }
+  h2 {
+    color: aliceblue;
+  }
+  p {
+    color: aliceblue;
+
+  }
+
+  .block-label2 {
+    position: absolute;
+    top: 10px;      
+    left: 650px;      
+    width: 40px;    
+    height: 50px;    
+    background: white;
+    border-radius: 6px;
+    z-index: 10;
+  }
+
+
+</style>
+</head>
+<body>
+
+<div id="box">
+
+  <h2> Easy: Guess the Country</h2>
+  <p>Look at the street view but do not leave this website for this link.</p>
+
+  <div class="map-wrapper">
+
+    <div class="block-label"></div>
+ <div class="block-label2"></div>
+   
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!4v1732659032766!6m8!1m7!1svgLsAtGDpaJ8-K3LWGVVRw!2m2!1d52.5356431!2d13.3848112!3f75!4f0!5f0.7820865974627469"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <input id="answer" placeholder="Type the country here...">
+  <br>
+  <button onclick="check()">Submit</button>
+
+  <div id="next-link">
+    <a href="escape8.html">Next Link</a>
+  </div>
+
+</div>
+
+<script>
+function check() {
+  const correctAnswer = "germany";
+  let user = document.getElementById("answer").value.toLowerCase().trim();
+
+  if (user === correctAnswer) {
+    alert("Correct! You unlocked the next link.");
+    document.getElementById("next-link").style.display = "block";
+  } else {
+    alert("Incorrect. Try again!");
+  }
+}
+</script>
+
+</body>
+</html>

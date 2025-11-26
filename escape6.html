@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<title>Where Was I?</title>
+<body>
+<style>
+
+    body {
+        background-color: rgb(27, 27, 27);
+        text-align: center;
+        padding-top: 20px;
+
+    }
+
+    h2 {
+        text-align: center;
+        color: aliceblue;
+        size: 22px
+    }
+
+    p {
+        text-align: center;
+        color: aliceblue;
+        size: 22px
+
+    }
+    input {
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+            border-radius: 10px;
+            
+        }
+      button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #911162;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+
+
+
+</style> 
+<br>
+<h2>Where Was I during September 30th 2025?</h2>
+<p>Hint: OSINT (City) </p>
+
+
+
+
+
+<input type="text" id="keyInput" placeholder="Enter key here...">
+<button onclick="checkKey()">Submit</button>
+<div id="msg"></div>
+
+<script>
+    const SECRET_KEY = "Strasbourg";
+
+    function checkKey() {
+        const userInput = document.getElementById("keyInput").value;
+        const msg = document.getElementById("msg");
+
+        if (userInput === SECRET_KEY) {
+            msg.style.color = "lightgreen";
+            msg.textContent = "Correct! Redirecting...";
+            setTimeout(() => {
+                window.location.href = "escape7.html"; 
+            }, 1200);
+        } else {
+            msg.style.color = "red";
+            msg.textContent = "Wrong, try again.";
+        }
+    }
+</script>
+
+
+</body>
+</html>
