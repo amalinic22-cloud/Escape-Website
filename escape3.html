@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trivia Quiz</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(42, 42, 42);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  #quiz-container {
+    background-color: oklab(19.573999999999998% 0 -0.00002);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: white;
+  }
+
+  .question {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+
+  label {
+    display: block;
+    margin: 5px 0;
+    cursor: pointer;
+  }
+
+  input[type="radio"] {
+    margin-right: 8px;
+  }
+
+  #submit-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  #submit-btn:hover {
+    background-color: #45a049;
+  }
+
+  #next-link {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  #next-link:hover {
+    text-decoration: underline;
+  }
+
+  #feedback {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #d9534f; 
+  }
+
+  #feedback.correct {
+    color: #4CAF50; 
+  }
+</style>
+</head>
+<body>
+
+    
+<div id="quiz-container">
+     <p style="text-align:center; font-weight:bold; margin-bottom:10px; color: white;">
+    Answer all the questions correctly to unlock the next link!
+  </p>
+  <h2>Trivia Quiz</h2>
+
+  <div class="question" data-answer="b">
+    <p>1. What is the capital of Belgium?</p>
+    <label><input type="radio" name="q1" value="a"> Stockholm</label>
+    <label><input type="radio" name="q1" value="b"> Brussels</label>
+    <label><input type="radio" name="q1" value="c"> Vienna</label>
+  </div>
+
+  <div class="question" data-answer="c">
+    <p>2. Which of the following is a real programming language?</p>
+    <label><input type="radio" name="q2" value="a"> AMTOP</label>
+    <label><input type="radio" name="q2" value="b"> ProgramEst</label>
+    <label><input type="radio" name="q2" value="c"> Shakespeare</label>
+  </div>
+
+  <div class="question" data-answer="a">
+    <p>3. What movie was not based on a book?</p>
+    <label><input type="radio" name="q3" value="a"> The Matrix</label>
+    <label><input type="radio" name="q3" value="b"> The Lord of the Rings</label>
+    <label><input type="radio" name="q3" value="c"> Forest Gump</label>
+  </div>
+
+  <div class="question" data-answer="b">
+    <p>4. What country consumes the most chocolate per year?</p>
+    <label><input type="radio" name="q4" value="a"> The Netherlands</label>
+    <label><input type="radio" name="q4" value="b"> Switzerland</label>
+    <label><input type="radio" name="q4" value="c"> USA</label>
+  </div>
+
+  <div class="question" data-answer="c">
+    <p>5. What country has the national animal of a unicorn?</p>
+    <label><input type="radio" name="q5" value="a"> Chile</label>
+    <label><input type="radio" name="q5" value="b"> Austria</label>
+    <label><input type="radio" name="q5" value="c"> Scotland</label>
+  </div>
+
+  <div class="question" data-answer="a">
+    <p>6. What is the most populated continent? </p>
+    <label><input type="radio" name="q6" value="a"> Asia</label>
+    <label><input type="radio" name="q6" value="b"> South America</label>
+    <label><input type="radio" name="q6" value="c"> Africa</label>
+  </div>
+
+  <div class="question" data-answer="b">
+    <p>7. How many digits of pi are there?</p>
+    <label><input type="radio" name="q7" value="a"> 87 Trillion</label>
+    <label><input type="radio" name="q7" value="b"> Infinite</label>
+    <label><input type="radio" name="q7" value="c"> 91 Trilion</label>
+  </div>
+
+  <button id="submit-btn">Submit Quiz</button>
+  <a id="next-link" href="escape4.html">Next Link</a>
+  <p id="feedback"></p>
+</div>
+
+<script>
+document.getElementById("submit-btn").addEventListener("click", function() {
+  const questions = document.querySelectorAll(".question");
+  let allCorrect = true;
+
+  questions.forEach(q => {
+    const selected = q.querySelector('input[type="radio"]:checked');
+    if (!selected || selected.value !== q.dataset.answer) {
+      allCorrect = false;
+    }
+  });
+
+  const feedback = document.getElementById("feedback");
+  const nextLink = document.getElementById("next-link");
+
+  if (allCorrect) {
+    feedback.textContent = "All correct! You can now click the next link.";
+    feedback.classList.add("correct");
+    nextLink.style.display = "inline-block";
+  } else {
+    feedback.textContent = "Some answers are wrong. Try again!";
+    feedback.classList.remove("correct");
+    nextLink.style.display = "none";
+  }
+});
+</script>
+
+
+
+</body>
+</html>

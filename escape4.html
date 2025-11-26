@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moving Link Challenge</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #0c0c0c;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+  }
+
+  #moving-link {
+    position: absolute;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #next-link {
+    display: none;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+    color: green;
+    font-size: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Click the <a href="escape5.html" style="text-decoration: none; color: #ffffff;">Link</a> </h2>
+<p style="text-align:center; color: #ffffff;">Catch it if you can!</p>
+
+<a href="#" id="moving-link">Click Me!</a>
+<div id="next-link">
+  <a href="escape4wrong.html">Next Link</a>
+</div>
+
+<script>
+const movingLink = document.getElementById("moving-link");
+const nextLink = document.getElementById("next-link");
+const speed = 400;
+
+function moveLink() {
+  const maxX = window.innerWidth - movingLink.offsetWidth;
+  const maxY = window.innerHeight - movingLink.offsetHeight;
+  const randomX = Math.floor(Math.random() * maxX);
+  const randomY = Math.floor(Math.random() * maxY);
+
+  movingLink.style.left = randomX + "px";
+  movingLink.style.top = randomY + "px";
+}
+
+
+let moveInterval = setInterval(moveLink, speed);
+
+
+movingLink.addEventListener("click", function(e) {
+  e.preventDefault(); 
+  clearInterval(moveInterval);
+  movingLink.style.display = "none"; 
+  nextLink.style.display = "block"; 
+});
+</script>
+
+
+</body>
+</html>
