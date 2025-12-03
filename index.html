@@ -97,7 +97,7 @@
 <a href="escape2.html" target="_self">Boo</a> 
 
 <script>
-    const SECRET_KEY = "placeholder";
+    const SECRET_KEY = "YouHaveEscapedMyWebsite!";
 
     function checkKey() {
         const userInput = document.getElementById("keyInput").value;
@@ -107,7 +107,7 @@
             msg.style.color = "lightgreen";
             msg.textContent = "Correct! Redirecting...";
             setTimeout(() => {
-                window.location.href = "correct.html"; 
+                window.location.href = "winner.html"; 
             }, 1200);
         } else {
             msg.style.color = "red";
